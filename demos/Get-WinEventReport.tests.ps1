@@ -1,6 +1,10 @@
+# usage
+# Invoke-Pester -show All -WarningAction SilentlyContinue
+
+#This Pester test is a work in progress
 
 BeforeAll {
-    . $PSCommandPath.Replace('.Tests.ps1', '.ps1')
+    . $PSCommandPath.Replace('.tests.ps1', '.ps1')
 }
 
 Describe 'Get-WinEventReport' {
@@ -44,7 +48,6 @@ Describe 'Get-WinEventReport' {
 
         } -Pending
     }
-
 
     Context 'Format and Type' {
         BeforeAll {

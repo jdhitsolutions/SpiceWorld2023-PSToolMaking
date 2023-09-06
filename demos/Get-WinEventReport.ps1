@@ -224,6 +224,7 @@ Function Get-WinEventReport {
 
 } #close Get-WinEventReport
 
+#region format and type data
 <#
 Import the custom formatting file. It is expected to be in the same
 directory as this script file. If querying the Security log you will want
@@ -232,7 +233,10 @@ to use the custom view.
 Get-WinEventReport 'Security' -MaxEvents 1000 -Computername DOM1,DOM2 | format-table -View security
 
 #>
+
 Update-FormatData $PSScriptRoot\WinEventReport.format.ps1xml
 
-#extend the type
+#extend the type by adding an alias property
 Update-TypeData -TypeName WinEventReport -MemberType AliasProperty -MemberName Date -Value AuditDate -force
+
+#endregion
